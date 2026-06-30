@@ -1,0 +1,44 @@
+<%- include('../cabecalho.ejs')%>
+ <main class="container">
+        <div class="page-header">
+            <h2>Lista de Produtos</h2>
+            <a href="/produto/add" class="btn btn-success">+ Novo Produto</a>
+            <form method="post"> </br>
+                <div class="form-group">
+                <input type="text" name="pesquisar" placeholder="Nome do produto">
+                <input class="btn btn-success" type="submit" value="Buscar">
+              </div>
+            </form>
+        </div>
+
+ <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Marca</th>
+                        <th>Preço</th>
+                        <th>Quantidade de Estoque</th>
+                        <th>Garantia</th>
+                        <th>Excluir</th>
+                        <th>Editar</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                    <% produtos.forEach(produto => { %>
+                        <tr>
+                            <td><%= produto.nome %></td>
+                            <td><%= produto.marca %></td>
+                            <td><%= produto.preco %></td>
+                            <td><%= produto.quantidadeEstoque %></td>
+                            <td><%= produto.garantia %></td>
+                            <td><a href="/produto/del/<%= produto.id %>" class="link">EXCLUIR</a></td>
+                            <td><a href="/produto/edt/<%= produto.id %>" class="link">EDITAR</a></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+<%- include('../rodape.ejs')%>
